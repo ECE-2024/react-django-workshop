@@ -1,11 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Navbar, NavbarBrand } from "react-bootstrap";
+import FightersContainer from "./components/FightersContainer";
 import NavigationBar from "./components/NavigationBar";
 
 function App() {
   return (
     <div>
       <NavigationBar />
+      <FightersContainer />
     </div>
   );
 }
