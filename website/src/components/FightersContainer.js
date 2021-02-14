@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "react-bootstrap";
 import FighterCard from "./FighterCard";
 
 class FightersContainer extends Component {
@@ -54,6 +55,9 @@ class FightersContainer extends Component {
         <h1 className="text-center" style={{ marginTop: 75 }}>
           Choose your fighter!
         </h1>
+        <div className="my-3 text-center">
+          <Button>Create fighter +</Button>
+        </div>
         {this.renderFighters()}
       </div>
     );
