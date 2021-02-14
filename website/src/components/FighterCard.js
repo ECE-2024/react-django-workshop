@@ -3,8 +3,8 @@ import { Button, Card, ListGroup } from "react-bootstrap";
 
 function FighterCard(props) {
   return (
-    <Card className="my-3 mx-auto col-3">
-      <Card.Title className="text-center">{props.fighter.name}</Card.Title>
+    <Card className="my-3 py-3 mx-auto col-3">
+      <Card.Title className="text-center"><h3>{props.fighter.name}</h3></Card.Title>
       <Card.Img variant="top" src={props.fighter.image} />
       <Card.Body>
         <Card.Text className="text-center">
@@ -19,7 +19,7 @@ function FighterCard(props) {
         </ListGroup>
       </Card.Body>
       <div>
-        <Button className="col-6">Level Up!</Button>
+        <Button className="col-6 bg-success">Level Up!</Button>
         <Button className="col-6 bg-danger">Delete</Button>
       </div>
     </Card>
