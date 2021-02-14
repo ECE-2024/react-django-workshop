@@ -27,6 +27,7 @@ class FightersContainer extends Component {
           speed: 20,
           type: 1,
           weakness: 5,
+          datetime_created: "today",
         },
         {
           image:
@@ -38,6 +39,7 @@ class FightersContainer extends Component {
           speed: 20,
           type: 1,
           weakness: 5,
+          datetime_created: "today",
         },
       ],
     });
