@@ -18,6 +18,7 @@ class FightersContainer extends Component {
     this.setState({
       fighters: [
         {
+          id: 2,
           image:
             "https://upload.wikimedia.org/wikipedia/en/a/a5/Ken_Masters.png",
           name: "ryu",
@@ -30,6 +31,7 @@ class FightersContainer extends Component {
           datetime_created: "today",
         },
         {
+          id: 1,
           image:
             "https://upload.wikimedia.org/wikipedia/en/a/a5/Ken_Masters.png",
           name: "ken",
@@ -47,7 +49,12 @@ class FightersContainer extends Component {
 
   renderFighters = () => {
     return this.state.fighters.map((fighter, i) => (
-      <FighterCard key={i} fighter={fighter} />
+      <FighterCard
+        key={i}
+        fighter={fighter}
+        editFighter={this.editFighter}
+        removeFighter={this.removeFighter}
+      />
     ));
   };
 

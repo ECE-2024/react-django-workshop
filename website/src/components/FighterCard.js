@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Card, ListGroup } from "react-bootstrap";
+import { fighterTypes } from "../utils/fighterTypes";
 
 function FighterCard(props) {
   return (
@@ -27,7 +28,14 @@ function FighterCard(props) {
       </Card.Body>
       <div>
         <Button className="col-6 bg-success">Level Up!</Button>
-        <Button className="col-6 bg-danger">Delete</Button>
+        <Button
+          className="col-6 bg-danger"
+          onClick={() => {
+            props.removeFighter(props.fighter.id);
+          }}
+        >
+          Delete
+        </Button>
       </div>
     </Card>
   );
