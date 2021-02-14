@@ -46,8 +46,8 @@ class FightersContainer extends Component {
   };
 
   renderFighters = () => {
-    return this.state.fighters.map((fighter) => (
-      <FighterCard fighter={fighter} />
+    return this.state.fighters.map((fighter, i) => (
+      <FighterCard key={i} fighter={fighter} />
     ));
   };
 
