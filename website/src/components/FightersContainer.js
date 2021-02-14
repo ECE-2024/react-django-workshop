@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
+import CreateFighterModal from "./CreateFighterModal";
 import FighterCard from "./FighterCard";
 
 class FightersContainer extends Component {
@@ -44,6 +45,7 @@ class FightersContainer extends Component {
           datetime_created: "today",
         },
       ],
+      isModalOpen: false,
     });
   };
 
@@ -56,6 +58,10 @@ class FightersContainer extends Component {
         removeFighter={this.removeFighter}
       />
     ));
+  };
+
+  closeModal = () => {
+    this.setState({ isModalOpen: false });
   };
 
   addFighter = (fighter) => {
@@ -83,8 +89,15 @@ class FightersContainer extends Component {
           Choose your fighter!
         </h1>
         <div className="my-3 text-center">
-          <Button>Create fighter +</Button>
+          <Button onClick={() => this.setState({ isModalOpen: true })}>
+            Create fighter +
+          </Button>
         </div>
+        <CreateFighterModal
+          isOpen={this.state.isModalOpen}
+          closeModal={this.closeModal}
+          createFighter={this.addFighter}
+        />
         {this.renderFighters()}
       </div>
     );
