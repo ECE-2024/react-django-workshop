@@ -51,6 +51,24 @@ class FightersContainer extends Component {
     ));
   };
 
+  addFighter = (fighter) => {
+    this.setState({ fighters: [fighter, ...this.state.fighters] });
+  };
+
+  editFighter = (fighter) => {
+    this.setState({
+      fighters: this.state.fighters.map((currentFighter) =>
+        currentFighter.id === fighter.id ? fighter : currentFighter
+      ),
+    });
+  };
+
+  removeFighter = (id) => {
+    this.setState({
+      fighters: this.state.fighters.filter((fighter) => fighter.id !== id),
+    });
+  };
+
   render() {
     return (
       <div>
