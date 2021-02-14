@@ -14,6 +14,7 @@ const handleSubmit = (e, closeModal, createFighter) => {
     type: getVal("type"),
     weakness: getVal("weakness"),
     description: getVal("description"),
+    image: getVal("image")
   };
 
   createFighter({
@@ -87,6 +88,13 @@ const CreateFighterModal = ({ isOpen, closeModal, createFighter }) => {
           <Form.Group className="col-12" controlId="description">
             <Form.Label>Description</Form.Label>
             <Form.Control type="text" />
+          </Form.Group>
+        </Form.Row>
+
+        <Form.Row>
+          <Form.Group className="col-12" controlId="image">
+            <Form.Label>Image</Form.Label>
+            <Form.Control type="file" />
           </Form.Group>
         </Form.Row>
 
