@@ -3,7 +3,7 @@ import { Button, Card, ListGroup } from "react-bootstrap";
 
 function FighterCard(props) {
   return (
-    <Card className="m-auto col-3">
+    <Card className="my-3 mx-auto col-3">
       <Card.Title className="text-center">{props.fighter.name}</Card.Title>
       <Card.Img variant="top" src={props.fighter.image} />
       <Card.Body>
