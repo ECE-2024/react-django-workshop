@@ -16,8 +16,12 @@ function FighterCard(props) {
           <ListGroup.Item>Health: {props.fighter.health}</ListGroup.Item>
           <ListGroup.Item>Attack: {props.fighter.attack}</ListGroup.Item>
           <ListGroup.Item>Speed: {props.fighter.speed}</ListGroup.Item>
-          <ListGroup.Item>Type: {props.fighter.type}</ListGroup.Item>
-          <ListGroup.Item>Weakness: {props.fighter.weakness}</ListGroup.Item>
+          <ListGroup.Item>
+            Type: {fighterTypes[props.fighter.type]}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            Weakness: {fighterTypes[props.fighter.weakness]}
+          </ListGroup.Item>
         </ListGroup>
         <div className="mt-3">Created: {props.fighter.datetime_created}</div>
       </Card.Body>
