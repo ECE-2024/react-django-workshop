@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from fighters.views import FightersViewSet
 from rest_framework.routers import DefaultRouter
 
 fightersRouter = DefaultRouter(trailing_slash=False)
 fightersRouter.register("api/fighters", FightersViewSet)
 
-urlpatterns = fightersRouter.urls
+urlpatterns = fightersRouter.urls + static(
+    settings.MEDIA_URL, document_root=settings.MEDIA_URL
+)
