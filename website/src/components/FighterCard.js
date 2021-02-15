@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card, ListGroup } from "react-bootstrap";
 import { fighterTypes } from "../utils/fighterTypes";
+import CreateFighterModal from "./CreateFighterModal";
 
 function FighterCard(props) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <Card className="my-3 py-3 mx-auto col-3">
       <Card.Title className="text-center">
@@ -27,7 +30,12 @@ function FighterCard(props) {
         <div className="mt-3">Created: {props.fighter.datetime_created}</div>
       </Card.Body>
       <div>
-        <Button className="col-6 bg-success">Level Up!</Button>
+        <Button
+          className="col-6 bg-success"
+          onClick={() => setIsModalOpen(true)}
+        >
+          Level Up!
+        </Button>
         <Button
           className="col-6 bg-danger"
           onClick={() => {
@@ -37,6 +45,12 @@ function FighterCard(props) {
           Delete
         </Button>
       </div>
+      <CreateFighterModal
+        isOpen={isModalOpen}
+        closeModal={() => setIsModalOpen(false)}
+        createFighter={props.editFighter}
+        fighter={props.fighter}
+      />
     </Card>
   );
 }
