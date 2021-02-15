@@ -21,13 +21,15 @@ function FighterCard(props) {
           <ListGroup.Item>Attack: {props.fighter.attack}</ListGroup.Item>
           <ListGroup.Item>Speed: {props.fighter.speed}</ListGroup.Item>
           <ListGroup.Item>
-            Type: {fighterTypes[props.fighter.type]}
+            Type: {fighterTypes[props.fighter.fighter_type]}
           </ListGroup.Item>
           <ListGroup.Item>
             Weakness: {fighterTypes[props.fighter.weakness]}
           </ListGroup.Item>
         </ListGroup>
-        <div className="mt-3">Created: {props.fighter.datetime_created}</div>
+        <div className="mt-3">
+          Created: {new Date(props.fighter.datetime_created).toLocaleString()}
+        </div>
       </Card.Body>
       <div>
         <Button
