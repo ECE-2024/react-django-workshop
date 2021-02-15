@@ -2,11 +2,12 @@ import React from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { fighterTypes } from "../utils/fighterTypes";
 
-const handleSubmit = (e, closeModal, createFighter) => {
+const handleSubmit = (e, closeModal, createFighter, fighter) => {
   e.preventDefault();
   const getVal = (id) => document.getElementById(id).value;
 
-  const fighter = {
+  createFighter({
+    ...fighter,
     name: getVal("name"),
     health: getVal("health"),
     attack: getVal("attack"),
@@ -15,19 +16,6 @@ const handleSubmit = (e, closeModal, createFighter) => {
     weakness: getVal("weakness"),
     description: getVal("description"),
     image: getVal("image"),
-  };
-
-  createFighter({
-    id: 3,
-    image: "https://upload.wikimedia.org/wikipedia/en/a/a5/Ken_Masters.png",
-    name: "chun li",
-    description: "street fighter",
-    health: 1000,
-    attack: 300,
-    speed: 20,
-    type: 0,
-    weakness: 1,
-    datetime_created: "today",
   });
   closeModal();
 };
@@ -40,7 +28,7 @@ const CreateFighterModal = ({ isOpen, closeModal, createFighter, fighter }) => {
       </h3>
       <Form
         className="m-auto"
-        onSubmit={(e) => handleSubmit(e, closeModal, createFighter)}
+        onSubmit={(e) => handleSubmit(e, closeModal, createFighter, fighter)}
       >
         <Form.Row>
           <Form.Group className="col-6" controlId="name">
@@ -102,7 +90,7 @@ const CreateFighterModal = ({ isOpen, closeModal, createFighter, fighter }) => {
 
         <div className="text-center">
           <Button className="col-3 mb-3" type="submit">
-            Create
+            {fighter ? "Edit" : "Create"}
           </Button>
         </div>
       </Form>
