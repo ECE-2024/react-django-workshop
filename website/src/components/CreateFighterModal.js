@@ -12,7 +12,7 @@ const handleSubmit = (e, closeModal, createFighter, fighter) => {
     health: getVal("health"),
     attack: getVal("attack"),
     speed: getVal("speed"),
-    type: getVal("type"),
+    fighter_type: getVal("fighter_type"),
     weakness: getVal("weakness"),
     description: getVal("description"),
     image: getVal("image"),
@@ -55,9 +55,9 @@ const CreateFighterModal = ({ isOpen, closeModal, createFighter, fighter }) => {
         </Form.Row>
 
         <Form.Row>
-          <Form.Group className="col-6" controlId="type">
+          <Form.Group className="col-6" controlId="fighter_type">
             <Form.Label>Type</Form.Label>
-            <Form.Control as="select" defaultValue={fighter?.type}>
+            <Form.Control as="select" defaultValue={fighter?.fighter_type}>
               {fighterTypes.map((fType, i) => (
                 <option value={i}>{fType}</option>
               ))}

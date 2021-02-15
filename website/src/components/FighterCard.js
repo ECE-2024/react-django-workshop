@@ -21,7 +21,7 @@ function FighterCard(props) {
           <ListGroup.Item>Attack: {props.fighter.attack}</ListGroup.Item>
           <ListGroup.Item>Speed: {props.fighter.speed}</ListGroup.Item>
           <ListGroup.Item>
-            Type: {fighterTypes[props.fighter.type]}
+            Type: {fighterTypes[props.fighter.fighter_type]}
           </ListGroup.Item>
           <ListGroup.Item>
             Weakness: {fighterTypes[props.fighter.weakness]}
