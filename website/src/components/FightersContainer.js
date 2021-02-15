@@ -73,9 +73,16 @@ class FightersContainer extends Component {
   };
 
   removeFighter = (id) => {
-    this.setState({
-      fighters: this.state.fighters.filter((fighter) => fighter.id !== id),
-    });
+    axios
+      .delete(`${BASE_URL}api/fighters/${id}`)
+      .then((response) => {
+        this.setState({
+          fighters: this.state.fighters.filter((fighter) => fighter.id !== id),
+        });
+      })
+      .catch((error) => {
+        console.dir(error?.response);
+      });
   };
 
   render() {
