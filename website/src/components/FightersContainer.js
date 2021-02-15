@@ -18,21 +18,6 @@ class FightersContainer extends Component {
     this.getFighters();
   };
 
-  renderFighters = () => {
-    return this.state.fighters.map((fighter, i) => (
-      <FighterCard
-        key={i}
-        fighter={fighter}
-        editFighter={this.editFighter}
-        removeFighter={this.removeFighter}
-      />
-    ));
-  };
-
-  closeModal = () => {
-    this.setState({ isModalOpen: false });
-  };
-
   getFighters = () => {
     axios
       .get(BASE_URL + "api/fighters")
@@ -83,6 +68,21 @@ class FightersContainer extends Component {
       .catch((error) => {
         console.dir(error?.response);
       });
+  };
+
+  renderFighters = () => {
+    return this.state.fighters.map((fighter, i) => (
+      <FighterCard
+        key={i}
+        fighter={fighter}
+        editFighter={this.editFighter}
+        removeFighter={this.removeFighter}
+      />
+    ));
+  };
+
+  closeModal = () => {
+    this.setState({ isModalOpen: false });
   };
 
   render() {
