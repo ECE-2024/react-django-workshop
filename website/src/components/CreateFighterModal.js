@@ -59,7 +59,9 @@ const CreateFighterModal = ({ isOpen, closeModal, createFighter, fighter }) => {
             <Form.Label>Type</Form.Label>
             <Form.Control as="select" defaultValue={fighter?.fighter_type}>
               {fighterTypes.map((fType, i) => (
-                <option value={i}>{fType}</option>
+                <option value={i} key={i}>
+                  {fType}
+                </option>
               ))}
             </Form.Control>
           </Form.Group>
@@ -68,7 +70,9 @@ const CreateFighterModal = ({ isOpen, closeModal, createFighter, fighter }) => {
             <Form.Label>Weakness</Form.Label>
             <Form.Control as="select" defaultValue={fighter?.weakness}>
               {fighterTypes.map((fType, i) => (
-                <option value={i}>{fType}</option>
+                <option value={i} key={i}>
+                  {fType}
+                </option>
               ))}
             </Form.Control>
           </Form.Group>
