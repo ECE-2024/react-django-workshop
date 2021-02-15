@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
+from .models import Fighter
+from .serializers import FighterSerializer
 
-# Create your views here.
+
+class FightersViewSet(ModelViewSet):
+    queryset = Fighter.objects.all()
+    serializer_class = FighterSerializer
