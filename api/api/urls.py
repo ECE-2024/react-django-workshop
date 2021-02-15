@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from fighters.views import FightersViewSet
+from rest_framework.routers import DefaultRouter
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-]
+fightersRouter = DefaultRouter(trailing_slash=False)
+fightersRouter.register("api/fighters", FightersViewSet)
+
+urlpatterns = fightersRouter.urls
