@@ -2,21 +2,28 @@ import React from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { fighterTypes } from "../utils/fighterTypes";
 
-const handleSubmit = (e, closeModal, createFighter, fighter) => {
+const handleSubmit = (e, closeModal, createFighter, id) => {
   e.preventDefault();
   const getVal = (id) => document.getElementById(id).value;
 
-  createFighter({
-    ...fighter,
-    name: getVal("name"),
-    health: getVal("health"),
-    attack: getVal("attack"),
-    speed: getVal("speed"),
-    fighter_type: getVal("fighter_type"),
-    weakness: getVal("weakness"),
-    description: getVal("description"),
-    image: getVal("image"),
-  });
+  const formData = new FormData();
+  if (id) {
+    formData.append("id", id);
+  }
+  formData.append("name", getVal("name"));
+  formData.append("health", getVal("health"));
+  formData.append("attack", getVal("attack"));
+  formData.append("speed", getVal("speed"));
+  formData.append("fighter_type", getVal("fighter_type"));
+  formData.append("weakness", getVal("weakness"));
+  formData.append("description", getVal("description"));
+
+  const image = document.getElementById("image").files[0];
+  if (image) {
+    formData.append("image", image);
+  }
+
+  createFighter(formData);
   closeModal();
 };
 
