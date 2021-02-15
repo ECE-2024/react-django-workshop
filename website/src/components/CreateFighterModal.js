@@ -28,36 +28,58 @@ const CreateFighterModal = ({ isOpen, closeModal, createFighter, fighter }) => {
       </h3>
       <Form
         className="m-auto"
-        onSubmit={(e) => handleSubmit(e, closeModal, createFighter, fighter)}
+        onSubmit={(e) =>
+          handleSubmit(e, closeModal, createFighter, fighter?.id)
+        }
       >
         <Form.Row>
           <Form.Group className="col-6" controlId="name">
             <Form.Label>Name</Form.Label>
-            <Form.Control type="text" defaultValue={fighter?.name} />
+            <Form.Control
+              type="text"
+              defaultValue={fighter?.name}
+              required={true}
+            />
           </Form.Group>
 
           <Form.Group className="col-6" controlId="health">
             <Form.Label>Health</Form.Label>
-            <Form.Control type="number" defaultValue={fighter?.health} />
+            <Form.Control
+              type="number"
+              defaultValue={fighter?.health}
+              required={true}
+            />
           </Form.Group>
         </Form.Row>
 
         <Form.Row>
           <Form.Group className="col-6" controlId="attack">
             <Form.Label>Attack</Form.Label>
-            <Form.Control type="number" defaultValue={fighter?.attack} />
+            <Form.Control
+              type="number"
+              defaultValue={fighter?.attack}
+              required={true}
+            />
           </Form.Group>
 
           <Form.Group className="col-6" controlId="speed">
             <Form.Label>Speed</Form.Label>
-            <Form.Control type="number" defaultValue={fighter?.speed} />
+            <Form.Control
+              type="number"
+              defaultValue={fighter?.speed}
+              required={true}
+            />
           </Form.Group>
         </Form.Row>
 
         <Form.Row>
           <Form.Group className="col-6" controlId="fighter_type">
             <Form.Label>Type</Form.Label>
-            <Form.Control as="select" defaultValue={fighter?.fighter_type}>
+            <Form.Control
+              as="select"
+              defaultValue={fighter?.fighter_type}
+              required={true}
+            >
               {fighterTypes.map((fType, i) => (
                 <option value={i} key={i}>
                   {fType}
@@ -68,7 +90,11 @@ const CreateFighterModal = ({ isOpen, closeModal, createFighter, fighter }) => {
 
           <Form.Group className="col-6" controlId="weakness">
             <Form.Label>Weakness</Form.Label>
-            <Form.Control as="select" defaultValue={fighter?.weakness}>
+            <Form.Control
+              as="select"
+              defaultValue={fighter?.weakness}
+              required={true}
+            >
               {fighterTypes.map((fType, i) => (
                 <option value={i} key={i}>
                   {fType}
