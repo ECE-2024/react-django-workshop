@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import axios from "axios";
 import { Button } from "react-bootstrap";
 import CreateFighterModal from "./CreateFighterModal";
 import FighterCard from "./FighterCard";
+
+const BASE_URL = "http://localhost:8000/";
 
 class FightersContainer extends Component {
   constructor(props) {
@@ -13,40 +16,6 @@ class FightersContainer extends Component {
 
   componentDidMount = () => {
     this.getFighters();
-  };
-
-  getFighters = () => {
-    this.setState({
-      fighters: [
-        {
-          id: 2,
-          image:
-            "https://upload.wikimedia.org/wikipedia/en/a/a5/Ken_Masters.png",
-          name: "ryu",
-          description: "street fighter",
-          health: 1000,
-          attack: 300,
-          speed: 20,
-          fighter_type: 1,
-          weakness: 2,
-          datetime_created: "today",
-        },
-        {
-          id: 1,
-          image:
-            "https://upload.wikimedia.org/wikipedia/en/a/a5/Ken_Masters.png",
-          name: "ken",
-          description: "street fighter",
-          health: 1000,
-          attack: 300,
-          speed: 20,
-          fighter_type: 0,
-          weakness: 3,
-          datetime_created: "today",
-        },
-      ],
-      isModalOpen: false,
-    });
   };
 
   renderFighters = () => {
@@ -64,16 +33,43 @@ class FightersContainer extends Component {
     this.setState({ isModalOpen: false });
   };
 
+  getFighters = () => {
+    axios
+      .get(BASE_URL + "api/fighters")
+      .then((response) => {
+        this.setState({ fighters: response.data });
+      })
+      .catch((error) => {
+        console.dir(error?.response);
+      });
+  };
+
   addFighter = (fighter) => {
-    this.setState({ fighters: [fighter, ...this.state.fighters] });
+    axios
+      .post(BASE_URL + "api/fighters", fighter)
+      .then((response) => {
+        this.setState({ fighters: [response.data, ...this.state.fighters] });
+      })
+      .catch((error) => {
+        console.dir(error?.response);
+      });
   };
 
   editFighter = (fighter) => {
-    this.setState({
-      fighters: this.state.fighters.map((currentFighter) =>
-        currentFighter.id === fighter.id ? fighter : currentFighter
-      ),
-    });
+    axios
+      .put(`${BASE_URL}api/fighters/${fighter.get("id")}`, fighter)
+      .then((response) => {
+        this.setState({
+          fighters: this.state.fighters.map((currentFighter) =>
+            currentFighter.id === response.data.id
+              ? response.data
+              : currentFighter
+          ),
+        });
+      })
+      .catch((error) => {
+        console.dir(error?.response);
+      });
   };
 
   removeFighter = (id) => {
