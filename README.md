@@ -3,7 +3,7 @@
 ## Django
 
 ### Create Django project
-`pip install django`
+`pip install django`  
 `django-admin startproject PROJECT_NAME`
 
 ### Create Django app
