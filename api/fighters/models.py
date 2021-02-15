@@ -12,7 +12,7 @@ class Fighter(models.Model):
     speed = models.IntegerField()
     fighter_type = models.IntegerField(choices=FIGHTER_TYPE_CHOICES)
     weakeness = models.IntegerField(choices=FIGHTER_TYPE_CHOICES)
-    image = models.ImageField(null=True)
+    image = models.ImageField(upload_to="media", null=True)
     datetime_created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
