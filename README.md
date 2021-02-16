@@ -1,6 +1,8 @@
 # react-django-workshop
 
 ## Django
+https://www.djangoproject.com/  
+https://www.django-rest-framework.org/  
 
 ### Create Django project
 `pip install django`  
@@ -19,6 +21,8 @@
 `python manage.py runserver`
 
 ## React
+https://reactjs.org/  
+https://react-bootstrap.github.io/  
 
 ### Create React app
 `npx create-react-app APP_NAME`
